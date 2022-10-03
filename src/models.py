@@ -33,6 +33,7 @@ class User(Base):
     username = Column(str(80))
     password = Column(str(250))
     email = Column(str(250))
+    favorites = Column(int, ForeignKey('favorites.object_id'))
 
 class Favorites(Base):
     __tablename__ = 'favorites'
