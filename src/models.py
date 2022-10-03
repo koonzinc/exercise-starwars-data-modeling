@@ -26,6 +26,31 @@ class Address(Base):
     person_id = Column(Integer, ForeignKey('person.id'))
     person = relationship(Person)
 
+
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(int, primary_key=True)
+    username = Column(str(80))
+    password = Column(str(250))
+    email = Column(str(250))
+
+class Favorites(Base):
+    __tablename__ = 'favorites'
+    object_id = Column(int, ForeignKey('characters.id', 'planets.id'))
+
+class Characters(Base):
+    __tablename__ = 'characters'
+    id = Column(int, primary_key=True)
+    gender = Column(str(250))
+    hair_color = Column(str(250))
+    eye_color = Column(str(250))
+
+class Planets(Base):
+    __tablename__ = 'planets'
+    id = Column(int, primary_key=True)
+    population = Column(str(250))
+    terrain = Column(str(250))
+
     def to_dict(self):
         return {}
 
